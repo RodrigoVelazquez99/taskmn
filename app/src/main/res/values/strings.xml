@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TaskMn</string>
+    <string name="action_settings">Settings</string>
+    <string name="nombre_tarea">%s</string>
+    <string name="asignatura_tarea">%s</string>
+    <string name="vencimiento_tarea">%s</string>
+    <string name="descripcion_tarea">Descripción</string>
+    <string name="nombre_holder">Nombre</string>
+    <string name="descripcion_holder">Agrega una breve descripción</string>
+</resources>
