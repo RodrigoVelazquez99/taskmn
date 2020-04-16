@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,100 +12,103 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar2"
+                android:id="@+id/toolbar4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
+                android:scrollbarSize="4dp"
                 android:theme="?attr/actionBarTheme"
-                app:title="Agregar"
-                app:titleMargin="8dp" />
+                app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Display2"
+                app:title="Modificar"
+                app:titleMargin="4dp"
+                app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <TextView
-                android:id="@+id/nombre_label_agregar"
+                android:id="@+id/act_nombre_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
                 android:text="@string/nombre_holder"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/nombre_agregar"
+                android:id="@+id/act_nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
                 android:ems="10"
-                android:hint="@string/nombre_holder"
+                android:hint="Nuevo nombre"
                 android:inputType="textPersonName"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/asignatura_label_agregar"
+                android:id="@+id/act_asignatura_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Asignatura"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/asignatura_agregar"
+                android:id="@+id/act_asignatura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Asignatura"
-                android:inputType="textPersonName"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:hint="Nueva asignatura"
+                android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/descripcion_label_agregar"
+                android:id="@+id/act_descripcion_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Descripción"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Descripcion "
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/descripcion_agregar"
+                android:id="@+id/act_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
                 android:ems="10"
-                android:hint="@string/descripcion_holder"
-                android:inputType="textMultiLine"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:gravity="start|top"
+                android:hint="Nueva descripcion"
+                android:inputType="textMultiLine" />
 
             <TextView
-                android:id="@+id/vencimiento_label_agregar"
+                android:id="@+id/act_vencimiento_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Selecciona una fecha de vencimiento"
+                android:layout_marginTop="10dp"
+                android:text="Fecha de vencimiento"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <CalendarView
-                android:id="@+id/calendarView"
+                android:id="@+id/calendarView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusedMonthDateColor="#003D90F0" />
+                android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/boton_agregar"
+                android:id="@+id/confirmar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="25dp"
-                android:background="@color/colorAccent"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Confirmar"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="#15A222"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Actualizar"
                 android:textColor="#FFFFFF" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </LinearLayout>

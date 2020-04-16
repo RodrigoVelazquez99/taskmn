@@ -26,8 +26,8 @@ public class ScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton add = (FloatingActionButton) findViewById(R.id.fab);
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -55,7 +55,8 @@ public class ScrollingActivity extends AppCompatActivity {
     private void init_tareas(ArrayList<Tarea> tareas) {
         for (int i = 0; i <= 10 ; i++) {
             String s = Integer.toString(i);
-            Tarea t = new Tarea(s + "/03/2020", "Tarea " + s, "Asignatura " + s, "Descripcion " + s);
+            Tarea t = new Tarea(s + "/03/2020", "Tarea " + s,
+                    "Asignatura " + s, "Descripcion " + s);
             tareas.add(t);
         }
 
