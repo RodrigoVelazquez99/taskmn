@@ -28,7 +28,23 @@
                 app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <TextView
-                android:id="@+id/act_asignatura_label"
+                android:id="@+id/ver_tarea_nombre_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/nombre_holder"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/ver_tarea_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/ver_asignatura_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -37,7 +53,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/act_asignatura"
+                android:id="@+id/ver_asignatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -45,7 +61,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/act_descripcion_label"
+                android:id="@+id/ver_descripcion_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -55,7 +71,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/act_descripcion"
+                android:id="@+id/ver_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -63,7 +79,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/act_vencimiento_label"
+                android:id="@+id/ver_vencimiento_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -72,7 +88,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/act_vencimiento"
+                android:id="@+id/ver_vencimiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -92,7 +108,7 @@
                 android:textColor="#FFFFFF" />
 
             <Button
-                android:id="@+id/confirmar"
+                android:id="@+id/eliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

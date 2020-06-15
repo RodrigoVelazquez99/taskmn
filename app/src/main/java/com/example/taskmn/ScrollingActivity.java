@@ -24,6 +24,7 @@ public class ScrollingActivity extends AppCompatActivity {
     private ListView listView;
     private TareaAdapter adapter;
     private final static String NUEVA_TAREA = "NUEVA_TAREA";
+    private final static String VER_TAREA = "VER_TAREA";
     private final static int AGREGAR_TAREA = 0;
 
     @Override
@@ -52,8 +53,10 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Tarea selected = (Tarea) listView.getItemAtPosition(position);
-                Toast t = Toast.makeText(getApplicationContext(), selected.getNombre() , Toast.LENGTH_SHORT);
-                t.show();
+                //Toast t = Toast.makeText(getApplicationContext(), selected.getNombre() , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), VerTareaActivity.class);
+                intent.putExtra(VER_TAREA,selected);
+                startActivity(intent);
             }
         });
     }
@@ -64,7 +67,6 @@ public class ScrollingActivity extends AppCompatActivity {
         if (requestCode == AGREGAR_TAREA) {
             if (resultCode == RESULT_OK) {
                 Tarea nueva = data.getParcelableExtra(NUEVA_TAREA);
-                Toast.makeText(getApplicationContext(), nueva.getNombre(), Toast.LENGTH_LONG).show();
                 tareas.add(nueva);
                 adapter.notifyDataSetChanged();
             }
