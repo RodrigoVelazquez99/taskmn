@@ -1,2 +1,2 @@
-# taskmn
-Aplicación que administra las tareas
+# Taskmn
+Aplicación que administra las tareas.
