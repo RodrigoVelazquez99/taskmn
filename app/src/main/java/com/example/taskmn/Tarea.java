@@ -81,6 +81,17 @@ public class Tarea implements Parcelable {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public boolean equals (Object obj) {
+        Tarea other = (Tarea) obj;
+        if (this.nombre.equals(other.getNombre()) &&
+            this.vencimiento.equals(other.getVencimiento()) &&
+            this.descripcion.equals(other.getDescripcion()) &&
+            this.asignatura.equals(other.getAsignatura())) {
+            return true;
+        }
+        return false;
+    }
 }
 
 

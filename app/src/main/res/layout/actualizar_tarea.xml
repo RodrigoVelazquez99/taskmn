@@ -47,7 +47,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/ver_asignatura_label"
+                android:id="@+id/act_asignatura_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -56,7 +56,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/ver_asignatura"
+                android:id="@+id/act_asignatura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -65,7 +65,7 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/ver_descripcion_label"
+                android:id="@+id/act_descripcion_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -75,7 +75,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <EditText
-                android:id="@+id/ver_descripcion"
+                android:id="@+id/act_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -84,7 +84,7 @@
                 android:inputType="textMultiLine" />
 
             <TextView
-                android:id="@+id/ver_vencimiento_label"
+                android:id="@+id/act_vencimiento_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -93,19 +93,18 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <CalendarView
-                android:id="@+id/calendarView2"
+                android:id="@+id/act_vencimiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/eliminar"
+                android:id="@+id/actualizar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
                 android:background="#15A222"
-                android:gravity="center_horizontal|center_vertical"
                 android:text="Actualizar"
                 android:textColor="#FFFFFF" />
 

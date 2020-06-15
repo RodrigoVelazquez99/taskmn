@@ -26,6 +26,9 @@ public class ScrollingActivity extends AppCompatActivity {
     private final static String NUEVA_TAREA = "NUEVA_TAREA";
     private final static String VER_TAREA = "VER_TAREA";
     private final static int AGREGAR_TAREA = 0;
+    private final static int MODIFICAR_TAREA = 1;
+    private final static String TAREA_MODIFICADA = "TAREA_MODIFICADA";
+    private final static String TAREA_ANTERIOR = "TAREA_ANTERIOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,9 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Tarea selected = (Tarea) listView.getItemAtPosition(position);
-                //Toast t = Toast.makeText(getApplicationContext(), selected.getNombre() , Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), VerTareaActivity.class);
                 intent.putExtra(VER_TAREA,selected);
-                startActivity(intent);
+                startActivityForResult(intent, MODIFICAR_TAREA);
             }
         });
     }
@@ -69,6 +71,20 @@ public class ScrollingActivity extends AppCompatActivity {
                 Tarea nueva = data.getParcelableExtra(NUEVA_TAREA);
                 tareas.add(nueva);
                 adapter.notifyDataSetChanged();
+                return;
+            }
+        }
+        if (requestCode == MODIFICAR_TAREA) {
+            if (resultCode == RESULT_OK){
+                Tarea modificada = data.getParcelableExtra(TAREA_MODIFICADA);
+                Tarea anterior = data.getParcelableExtra(TAREA_ANTERIOR);
+                if (modificada.equals(anterior)){
+                    return;
+                }
+                tareas.remove(anterior);
+                tareas.add(modificada);
+                adapter.notifyDataSetChanged();
+                return;
             }
         }
     }

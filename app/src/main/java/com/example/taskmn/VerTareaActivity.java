@@ -12,6 +12,11 @@ import android.widget.Toast;
 public class VerTareaActivity extends AppCompatActivity {
 
     private final static String VER_TAREA = "VER_TAREA";
+    private final static String TAREA_ACTUAL = "TAREA_ACTUAL";
+    private final static int MODIFICAR_TAREA = 0;
+    private final static String TAREA_MODIFICADA = "TAREA_MODIFICADA";
+    private final static String TAREA_ANTERIOR = "TAREA_ANTERIOR";
+
     private Tarea actual;
     private TextView tareaNombre;
     private TextView tareaAsignatura;
@@ -38,7 +43,9 @@ public class VerTareaActivity extends AppCompatActivity {
         modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), ModificarTareaActivity.class);
+                intent.putExtra(TAREA_ACTUAL, actual);
+                startActivityForResult(intent, MODIFICAR_TAREA);
             }
         });
         eliminar.setOnClickListener(new View.OnClickListener() {
@@ -47,5 +54,20 @@ public class VerTareaActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MODIFICAR_TAREA) {
+            if (resultCode == RESULT_OK) {
+                Tarea modificada = data.getParcelableExtra(TAREA_MODIFICADA);
+                Intent intent = new Intent ();
+                intent.putExtra(TAREA_MODIFICADA, modificada);
+                intent.putExtra(TAREA_ANTERIOR, actual);
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        }
     }
 }
