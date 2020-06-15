@@ -2,7 +2,12 @@ package com.example.taskmn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +21,8 @@ public class VerTareaActivity extends AppCompatActivity {
     private final static int MODIFICAR_TAREA = 0;
     private final static String TAREA_MODIFICADA = "TAREA_MODIFICADA";
     private final static String TAREA_ANTERIOR = "TAREA_ANTERIOR";
+    private final static int RESULT_REMOVE = 2;
+    private final static String TAREA_ELIMINADA = "TAREA_ELIMINADA";
 
     private Tarea actual;
     private TextView tareaNombre;
@@ -29,7 +36,6 @@ public class VerTareaActivity extends AppCompatActivity {
         setContentView(R.layout.tarea);
         Intent intent = getIntent();
         actual = intent.getParcelableExtra(VER_TAREA);
-        Toast.makeText(getApplicationContext(), actual.getNombre(), Toast.LENGTH_LONG).show();
         Button modificar = findViewById(R.id.modificar);
         Button eliminar = findViewById(R.id.eliminar);
         tareaNombre = findViewById(R.id.ver_tarea_nombre);
@@ -51,7 +57,25 @@ public class VerTareaActivity extends AppCompatActivity {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(VerTareaActivity.this);
+                dialog.setCancelable(false);
+                dialog.setTitle("Eliminar tarea");
+                dialog.setMessage("¿Estas seguro de eliminar esta tarea?");
+                dialog.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent();
+                        intent.putExtra(TAREA_ELIMINADA, actual);
+                        setResult(RESULT_REMOVE, intent);
+                        finish();
+                    }
+                }).setNegativeButton("Cancelar ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                });
 
+                final AlertDialog alert = dialog.create();
+                alert.show();
             }
         });
     }

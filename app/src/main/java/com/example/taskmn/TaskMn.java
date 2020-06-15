@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ScrollingActivity extends AppCompatActivity {
+public class TaskMn extends AppCompatActivity {
 
     private ArrayList<Tarea> tareas = new ArrayList<Tarea>();
     private ListView listView;
@@ -29,6 +29,8 @@ public class ScrollingActivity extends AppCompatActivity {
     private final static int MODIFICAR_TAREA = 1;
     private final static String TAREA_MODIFICADA = "TAREA_MODIFICADA";
     private final static String TAREA_ANTERIOR = "TAREA_ANTERIOR";
+    private final static int RESULT_REMOVE = 2;
+    private final static String TAREA_ELIMINADA = "TAREA_ELIMINADA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,12 @@ public class ScrollingActivity extends AppCompatActivity {
                 }
                 tareas.remove(anterior);
                 tareas.add(modificada);
+                adapter.notifyDataSetChanged();
+                return;
+            }
+            if (resultCode == RESULT_REMOVE) {
+                Tarea eliminada = data.getParcelableExtra(TAREA_ELIMINADA);
+                tareas.remove (eliminada);
                 adapter.notifyDataSetChanged();
                 return;
             }
