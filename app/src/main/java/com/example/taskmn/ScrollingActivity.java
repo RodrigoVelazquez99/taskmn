@@ -1,5 +1,6 @@
 package com.example.taskmn;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,6 +20,12 @@ import java.util.ArrayList;
 
 public class ScrollingActivity extends AppCompatActivity {
 
+    private ArrayList<Tarea> tareas = new ArrayList<Tarea>();
+    private ListView listView;
+    private TareaAdapter adapter;
+    private final static String NUEVA_TAREA = "NUEVA_TAREA";
+    private final static int AGREGAR_TAREA = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +37,14 @@ public class ScrollingActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), AgregarTareaActivity.class);
+                startActivityForResult(intent,AGREGAR_TAREA);
             }
         });
 
-        ArrayList<Tarea> tareas = new ArrayList<Tarea>();
         init_tareas(tareas);
-        final TareaAdapter adapter = new TareaAdapter(this, R.layout.list_item, tareas);
-        final ListView listView = (ListView) findViewById(R.id.list_view);
+        adapter = new TareaAdapter(this, R.layout.list_item, tareas);
+        listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
         listView.setNestedScrollingEnabled(true);
 
@@ -50,6 +56,19 @@ public class ScrollingActivity extends AppCompatActivity {
                 t.show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AGREGAR_TAREA) {
+            if (resultCode == RESULT_OK) {
+                Tarea nueva = data.getParcelableExtra(NUEVA_TAREA);
+                Toast.makeText(getApplicationContext(), nueva.getNombre(), Toast.LENGTH_LONG).show();
+                tareas.add(nueva);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     private void init_tareas(ArrayList<Tarea> tareas) {

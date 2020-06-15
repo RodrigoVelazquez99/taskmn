@@ -1,22 +1,56 @@
 package com.example.taskmn;
 
-public class Tarea {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    String vencimiento;
-    String nombre;
-    String asignatura;
-    String descripcion;
+public class Tarea implements Parcelable {
+
+    private String vencimiento;
+    private String nombre;
+    private String asignatura;
+    private String descripcion;
 
     public Tarea(String vencimiento, String nombre, String asignatura, String descripcion) {
+        super();
         this.vencimiento = vencimiento;
         this.nombre = nombre;
         this.asignatura = asignatura;
         this.descripcion = descripcion;
     }
 
+    public Tarea (Parcel source) {
+        this.vencimiento = source.readString();
+        this.nombre = source.readString();
+        this.asignatura = source.readString();
+        this.descripcion = source.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeString(this.vencimiento);
+        dest.writeString(this.nombre);
+        dest.writeString(this.asignatura);
+        dest.writeString(this.descripcion);
+    }
+
+    public static final Parcelable.Creator<Tarea> CREATOR = new Parcelable.Creator<Tarea>() {
+        @Override
+        public Tarea createFromParcel (Parcel source) {
+            return new Tarea(source);
+        }
+        @Override
+        public Tarea[] newArray(int size) {
+            return new Tarea[size];
+        }
+    };
+
     public String getVencimiento() {
         return this.vencimiento;
-
     }
 
     public void setVencimiento (String vencimiento) {

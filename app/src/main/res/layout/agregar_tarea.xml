@@ -93,7 +93,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <CalendarView
-                android:id="@+id/calendarView"
+                android:id="@+id/vencimiento_agregar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusedMonthDateColor="#003D90F0" />
