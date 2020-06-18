@@ -5,10 +5,15 @@ import android.os.Parcelable;
 
 public class Tarea implements Parcelable {
 
+    private int id;
     private String vencimiento;
     private String nombre;
     private String asignatura;
     private String descripcion;
+
+    public Tarea(){
+    }
+
 
     public Tarea(String vencimiento, String nombre, String asignatura, String descripcion) {
         super();
@@ -23,6 +28,7 @@ public class Tarea implements Parcelable {
         this.nombre = source.readString();
         this.asignatura = source.readString();
         this.descripcion = source.readString();
+        this.id = source.readInt();
     }
 
     @Override
@@ -36,6 +42,7 @@ public class Tarea implements Parcelable {
         dest.writeString(this.nombre);
         dest.writeString(this.asignatura);
         dest.writeString(this.descripcion);
+        dest.writeInt(this.id);
     }
 
     public static final Parcelable.Creator<Tarea> CREATOR = new Parcelable.Creator<Tarea>() {
@@ -79,6 +86,14 @@ public class Tarea implements Parcelable {
 
     public void setDescripcion (String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getId () {
+        return this.id;
+    }
+
+    public void setId (int id){
+        this.id = id;
     }
 
     @Override

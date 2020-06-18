@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 public class TaskMn extends AppCompatActivity {
 
+    private TareaBDD bd;
     private ArrayList<Tarea> tareas = new ArrayList<Tarea>();
     private ListView listView;
     private TareaAdapter adapter;
@@ -48,7 +50,9 @@ public class TaskMn extends AppCompatActivity {
             }
         });
 
-        init_tareas(tareas);
+        bd = new TareaBDD(this);
+        bd.openForRead();
+        tareas = bd.obtenerTareas();
         adapter = new TareaAdapter(this, R.layout.list_item, tareas);
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
@@ -68,10 +72,12 @@ public class TaskMn extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        bd.openForWrite();
         if (requestCode == AGREGAR_TAREA) {
             if (resultCode == RESULT_OK) {
                 Tarea nueva = data.getParcelableExtra(NUEVA_TAREA);
-                tareas.add(nueva);
+                Tarea tmp = bd.insertaTarea(nueva);
+                tareas.add(tmp);
                 adapter.notifyDataSetChanged();
                 return;
             }
@@ -84,27 +90,19 @@ public class TaskMn extends AppCompatActivity {
                     return;
                 }
                 tareas.remove(anterior);
-                tareas.add(modificada);
+                Tarea tmp = bd.actualizaTarea(modificada);
+                tareas.add(tmp);
                 adapter.notifyDataSetChanged();
                 return;
             }
             if (resultCode == RESULT_REMOVE) {
                 Tarea eliminada = data.getParcelableExtra(TAREA_ELIMINADA);
+                bd.eliminaTarea(eliminada);
                 tareas.remove (eliminada);
                 adapter.notifyDataSetChanged();
                 return;
             }
         }
-    }
-
-    private void init_tareas(ArrayList<Tarea> tareas) {
-        for (int i = 0; i <= 10 ; i++) {
-            String s = Integer.toString(i);
-            Tarea t = new Tarea(s + "/03/2020", "Tarea " + s,
-                    "Asignatura " + s, "Descripcion " + s);
-            tareas.add(t);
-        }
-
     }
 
 
