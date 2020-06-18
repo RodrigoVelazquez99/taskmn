@@ -1,5 +1,6 @@
 package com.example.taskmn;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -27,6 +28,49 @@ public class TareaBaseSQL extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase db) {
         db.execSQL(CREATE_DB);
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put (COL_NOMBRE, "Entrega del proyecto");
+        contentValues.put (COL_VENCIMIENTO, "19/06/2020");
+        contentValues.put (COL_ASIGNATURA, "Dispositivos mobiles");
+        contentValues.put (COL_DESCRIPCION, "Integrar la persistencia de datos en la tarea.");
+        db.insert(TABLA_TAREA, null, contentValues);
+
+        contentValues = new ContentValues();
+        contentValues.put (COL_NOMBRE, "Examen");
+        contentValues.put (COL_VENCIMIENTO, "19/06/2020");
+        contentValues.put (COL_ASIGNATURA, "Dispositivos mobiles");
+        contentValues.put (COL_DESCRIPCION, "El tercer examen de la asigntura.");
+        db.insert(TABLA_TAREA, null, contentValues);
+
+        contentValues = new ContentValues();
+        contentValues.put (COL_NOMBRE, "Práctica");
+        contentValues.put (COL_VENCIMIENTO, "18/06/2020");
+        contentValues.put (COL_ASIGNATURA, "Inteligencia Artificial");
+        contentValues.put (COL_DESCRIPCION, "Ultima práctica sobre redes de bayes.");
+        db.insert(TABLA_TAREA, null, contentValues);
+
+        contentValues = new ContentValues();
+        contentValues.put (COL_NOMBRE, "Tarea de riesgos");
+        contentValues.put (COL_VENCIMIENTO, "20/06/2020");
+        contentValues.put (COL_ASIGNATURA, "Riesgo tecnologico");
+        contentValues.put (COL_DESCRIPCION, "Tarea sobre el analisis de riesgos del proyecto final.");
+        db.insert(TABLA_TAREA, null, contentValues);
+
+        contentValues = new ContentValues();
+        contentValues.put (COL_NOMBRE, "Tarea de Ingenieria de software");
+        contentValues.put (COL_VENCIMIENTO, "22/06/2020");
+        contentValues.put (COL_ASIGNATURA, "Ingenieria de software");
+        contentValues.put (COL_DESCRIPCION, "Tarea sobre los modelos de calidad de software.");
+        db.insert(TABLA_TAREA, null, contentValues);
+
+        contentValues = new ContentValues();
+        contentValues.put (COL_NOMBRE, "Examen de Inteligencia Artificial");
+        contentValues.put (COL_VENCIMIENTO, "19/06/2020");
+        contentValues.put (COL_ASIGNATURA, "Inteligencia Artificial");
+        contentValues.put (COL_DESCRIPCION, "El utlimo examen acerca de probabilidad condicional.");
+        db.insert(TABLA_TAREA, null, contentValues);
+
     }
 
     @Override
